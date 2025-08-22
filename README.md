@@ -1,0 +1,131 @@
+# WebOasis
+
+[![GitHub](https://img.shields.io/badge/GitHub-WebOasis-181717?logo=github)](https://github.com/lsy641/WebOasis)
+[![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg)](https://arxiv.org/abs/0000.00000)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/lsy641/WebOasis/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/badge/GitHub-stars%20WebOasis?style=social)](https://github.com/lsy641/WebOasis/stargazers)
+
+WebOasis is a framework for building AI-driven web agents on real, complex websites. 
+
+
+
+<p align="center">
+  <a href="https://lsy641.github.io/WebOasis/demo_video.html">
+    <img src="https://img.youtube.com/vi/UgjgfZAmVJ0/maxresdefault.jpg" alt="Watch the video" style="max-width:100%;height:auto;display:block;">
+  </a>
+</p>
+
+
+
+
+## Features
+- **Any site. Any page. Any UI. Any complexity.** 
+Robust handling of dynamic, highly interactive pages. You focus on research—no brittle low‑level UI hacking. If you run into a tricky page the agent can't yet handle, please open a [request](https://github.com/lsy641/WebOasis/issues/new) and we'll help.
+
+- **One-parameter engine switch (Playwright ↔ Selenium).** 
+Choose your UI engine per experiment without changing operation code or test-suite boilerplate.
+
+- **Dual-agent architecture for clarity and power.** 
+Role Agent (human-like intent, high-level reasoning) + Web Agent (browser expert, low-level actions). Clean separation of observation and control.
+
+- **Supports both task automatiton and interactive (tutor‑style) agents (TODO).** 
+For tutor-style agents, Human (novice) → Role Agent (proficient user) → Web Agent (operator): guide, involve, and supervise actions in the loop.
+
+## Installation
+
+- From source:
+```bash
+git clone https://github.com/lsy641/WebOasis.git
+cd WebOasis
+pip install -e .
+```
+
+- PyPI (TODO):
+```bash
+pip install weboasis
+```
+
+## Run a demo
+
+The demo simulates a prostate cancer patient using a newly developed visit‑prep web app to surface UI design and system usability issues. At each step, the DualAgent observes page dynamics, articulates the user experience, infers intent, and executes the next UI action.
+
+```bash
+python WebOasis/scripts/demo.py
+```
+
+Demo core logic (simplified):
+```python
+import os
+from openai import OpenAI
+from weboasis.act_book import ActBookController
+from weboasis.agents import DualAgent
+from weboasis.agents.constants import TEST_ID_ATTRIBUTE
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+act_book = ActBookController(auto_register=False)
+act_book.register("browser/interaction")
+act_book.register("browser/navigation")
+act_book.register("general/flow")
+
+agent = DualAgent(
+    client=client, model="gpt-4.1-mini",
+    act_book=act_book, web_manager="playwright",
+    test_id_attribute=TEST_ID_ATTRIBUTE, log_dir="./logs/demo", verbose=True,
+)
+
+for _ in range(20):
+    if not agent.web_manager.is_browser_available():
+        break
+    agent.step()
+```
+
+## Project structure
+
+```
+WebOasis/
+├── act_book/                      # Operations and registry
+│   ├── core/                      # Base classes, registry, automator interface
+│   ├── book/
+│   │   ├── browser/
+│   │   │   ├── interaction.py     # Click/Type/Scroll/... operations
+│   │   │   ├── navigation.py      # Navigate/Back/Forward/Tab ops
+│   │   │   └── extraction.py      # GetText/Attribute/Screenshot/Title/URL
+│   │   ├── dom/selector.py        # Find/Wait/Exists/Visible
+│   │   ├── composite/
+│   │   │   ├── forms.py           # FillForm/Login/SubmitForm
+│   │   │   └── highlighting.py    # Visual highlight helpers
+│   │   └── general/flow.py        # NoAction (wait)
+│   └── engines/
+│       ├── playwright/playwright_automator.py
+│       └── selenium/selenium_automator.py
+├── ui_manager/                    # Browser managers and parser
+│   ├── base_manager.py
+│   ├── playwright_manager.py
+│   ├── selenium_manager.py
+│   ├── parsers/simple_parser.py   # Robust function-call parser
+│   ├── js_adapters.py             # Selenium JS adapters (sync/async)
+│   └── constants.py               # Loads injected JS utilities
+├── agents/                        # Agents and shared types
+│   ├── base.py                    # BaseAgent, WebAgent, RoleAgent
+│   ├── dual_agent.py              # Orchestrates Role + Web agents
+│   ├── constants.py               # Prompts and shared config
+│   └── types.py                   # Observation/Message/etc.
+├── javascript/                    # Injected browser-side utilities
+│   ├── frame_mark_elements.js
+│   ├── add_outline_elements.js
+│   ├── identify_interactive_elements.js
+│   ├── extract_accessbility_tree.js
+│   ├── create_developper_panel.js
+│   ├── hide_developer_elements.js
+│   └── show_developer_elements.js
+├── config/prompts.yaml            # Act/observe prompts
+└── scripts/demo.py                # Minimal runnable example
+```
+
+## Citation
+
+
+## License
+
+Apache License 2.0. See the `LICENSE` file.
+
