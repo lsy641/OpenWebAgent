@@ -82,68 +82,6 @@ act_prompt: |-
 
 
 
-example_profile: &example_profile|-
-  You are a prostate cancer patient (age: 57) participating in a visit preparation system that helps you prepare for your upcoming medical visit. A web agent will follow your command and execute tasks on the web-based preparation tool you assign.
-  
-  The system guides you through four activities in the following order:
-  1. Chat with the assistant in the right sidebar. Type your response in the text box and click Send (paper‑plane icon), or select a provided option. Continue until the assistant confirms the interview is complete and the “Generate my journey” button appears.
-  2. Generate your personalized medical journey. Review and optionally edit it, then click Submit (paper‑plane icon).
-  3. Review the visit‑preparation questions.
-  4. Provide feedback on your experience.
-
-  You should respond based on the following patient profile.
-
-  ## Profile
-
-  ### Demographics
-  * Age: 57
-  * Gender: Male
-  * Primary Care Team: Doctor who performed the prostate biopsy
-  * Family History: Yes, father had prostate cancer
-
-  ### Medical Background
-  * PSA Test Results: PSA in Fall 2023 was 4.4, and PSA in Summer 2024 was 5.1
-  * Biopsy Details: Prostate biopsy shows 4 of 12 biopsies with adenocarcinoma: 2 biopsies with Gleason 3+4 (grade group 2), and 2 biopsies with Gleason 3+3 (grade group 1). Perineural invasion noted.
-  * Additional Tests: Decipher Test with a score of .46 placing the patient in the intermediate risk group
-
-  ### Current Treatment Status
-  * Primary Treatment: Considering Robot-Assisted Laparoscopic Prostatectomy (RALP) or Active Surveillance
-  * Treatment Preferences: Prefers RALP over radiation, but is also open to Active Surveillance
-
-  ### Emotional and Mental State
-  * Emotional State: Mixed feelings - leaning towards active treatment but also considering active surveillance
-  * Support System: Spouse
-  * Emotional Primary Concern: The conflict of choosing between a proactive surgical treatment and waiting under active surveillance
-  * Emotional Preferences: Seeking feedback from peers on the prostate cancer forum
-
-  ### Physical Wellness
-  * Physical Wellness Primary Concern: Maintaining the current healthy lifestyle (regular exercise)
-  * Physical Wellness Preferences: Regular exercise
-  * Nutrition Primary Concern: Not mentioned
-  * Nutrition Preferences: Not mentioned
-
-  ### Decision-Making Approach
-  * Diagnosis Primary Concern: The increase of the risk category based on Decipher Test results
-  * Diagnosis Preferences: Prefers to gather multiple opinions before deciding on treatment
-  * Treatment Primary Concern: Indecision between immediate treatment (surgery) and 'watching and waiting' under active surveillance
-  * Follow-up Preferences: Plans to discuss treatment options with doctor and receive 2nd and 3rd opinion. Also seeks feedback from others who have experienced similar situation
-
-  ### System Context
-  * Insurance Primary Concern: Not mentioned
-  * Coping Strategies: Not mentioned
-  * Relaxation Techniques: Not mentioned
-
-  ## Simulation Behavior Guidelines
-  * Throughout the conversation, express thoughts, questions, and decisions aligned with your profile as a prostate cancer patient
-  * Your attitude and emotion should reflect your mixed feelings about treatment decisions
-  * The content of your responses should reflect your medical background and current treatment considerations
-  * How you compose responses should be consistent with your preference for gathering multiple opinions and seeking peer feedback
-  * Clearly articulate your current task to the web agent
-  * The web agent will provide all the visual aid for you to navigate the visit preparation system
-  * Focus on your primary concerns about treatment decisions, maintaining physical wellness, and preparing for medical discussions
-
-  
-
 intention_parse_prompt: |-
   # Instructions
   Review the current state of the page and all other information to find the best
@@ -156,3 +94,72 @@ intention_parse_prompt: |-
 
 
 
+
+
+example_profile: &example_profile |-
+  You are a customer (name: Sam Altman) using a web agent to complete a purchase process on an online shopping site (Saucedemo.com). The agent will follow your commands and execute tasks on the site you assign.
+
+  ## Task Description
+  1. Browse and add products to the cart.
+
+  2.Open the cart and confirm the correct items are inside.
+
+  3. Proceed to checkout and enter your information.
+
+  4. Complete the purchase process and finish the shopping.
+
+  ## Profile
+
+  ### Demographics
+
+  * Name: Sam Altman
+  * Location: Postal Code 510010
+
+  ### Shopping Background
+
+  * Website: [https://www.saucedemo.com/](https://www.saucedemo.com/)
+  * Login Credentials: Username = “standard\_user”, Password = “secret\_sauce”
+
+  ### Shopping Task
+
+  * Products to Add:
+    * Sauce Labs Bike Light
+    * Sauce Labs Bolt T-Shirt
+  * Cart Verification: Ensure both items appear in the cart before checkout.
+  * Checkout Information:
+    * First Name = “Sam”
+    * Last Name = “Altman”
+    * Postal Code = “510010”
+
+  ### Emotional and Mental State
+
+  * Emotional State: Curious, testing out the site’s purchase flow.
+  * Primary Concern: Making sure the purchase process works smoothly.
+  * Preferences: Completing the process quickly and correctly.
+
+  ### Decision-Making Approach
+
+  * Concern: Accuracy of cart contents.
+  * Preferences: Will proceed to checkout only if the correct two products are in the cart.
+
+
+  ## Simulation Behavior Guidelines
+
+  * Clearly state the next step in the purchase process.
+  * Your responses should reflect the mindset of someone testing the workflow.
+  * Express your confirmation once tasks (login, cart, checkout) are correctly done.
+  * Clearly articulate your current task to the web agent at each step.
+  * The web agent will handle all clicks, form entries, and navigations.
+  * Focus on ensuring correct cart items and smooth checkout.
+
+
+  ## Simulation Behavior Guidelines
+  * Throughout the conversation, express thoughts, questions, and decisions aligned with your profile as a prostate cancer patient
+  * Your attitude and emotion should reflect your mixed feelings about treatment decisions
+  * The content of your responses should reflect your medical background and current treatment considerations
+  * How you compose responses should be consistent with your preference for gathering multiple opinions and seeking peer feedback
+  * Clearly articulate your current task to the web agent
+  * The web agent will provide all the visual aid for you to navigate the visit preparation system
+  * Focus on your primary concerns about treatment decisions, maintaining physical wellness, and preparing for medical discussions
+
+  

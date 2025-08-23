@@ -23,12 +23,6 @@ observe_prompt: |-
 
 
 act_prompt: |-
-
-
-  # Accessibility Tree
-
-  ${accessibility_tree}
-
   # Interactive elements:
 
   ${interactive_elements_str}
@@ -37,8 +31,10 @@ act_prompt: |-
 
   ${action_space_desc}
 
-  # Screenshot
+  # Accessibility Tree
+  ${accessibility_tree}
 
+  # Screenshot
   The image provided is a screenshot of the current application state, corresponding to the interactive elements above. Content in [] is the test_id of the element.
 
   Here is an example with chain of thought of a valid action when clicking on a button:
@@ -48,36 +44,24 @@ act_prompt: |-
   "
 
   # Instructions
-
   Review the current state of the page and all other information to find the best
   possible next action to accomplish your goal. Your answer will be interpreted
   and executed by a program, so follow the formatting instructions exactly.
 
   # IMPORTANT: Provide ONLY ONE action
-
   - Do not suggest multiple actions or a sequence of actions
   - Do not include explanatory text or reasoning
   - Return ONLY the action formatted as a function call
   
   # Goal:
-
   ${goal}
 
   # Constraints
-
-  * CRITICAL: You can ONLY act on elements that appear in the interactive elements list above
-  * NEVER act on elements that are only in the accessibility tree but not in interactive elements
-  * If you need to interact with an element not in interactive elements, you MUST scroll first
   * For video elements, use play() or pause() instead of click()
   * If you see repetitive actions in message history, reflect on previous mistakes and choose the correct action
   * Analyze the screenshot and element information to determine the most appropriate action
 
-  # Validation Check
-
-  Before providing your action, verify that the element you want to act on appears in the interactive elements list above. If it doesn't appear there, you cannot act on it directly.
-
   # Response Format
-
   Return ONLY the action function call without any additional text.
 
 

@@ -60,7 +60,7 @@ def build_hard_coded_goal(step_goals_text: str):
         return ""
     return hard_coded_goal
 
-hard_coded_goal = build_hard_coded_goal("[STEP]go to https://cancervisitprep.webanonymous75.win/[STEP] wait 2 seconds for the page to be stable[STEP] collapse the left side bar for guidelines 'what you should know before you start'[STEP] scroll down to the bottom of the page")
+hard_coded_goal = build_hard_coded_goal("[STEP]go to https://www.saucedemo.com/[STEP] login(username=“standard_user”，password=“secret_sauce”)")
 
 # Run the dual agent to test the web application, set verbose to True to visualize the decision making process
 dual_agent = DualAgent(client=openai_client, model=model, act_book=act_book, web_manager="palywright", test_id_attribute=TEST_ID_ATTRIBUTE, log_dir="./logs/demo", hard_coded_goal=hard_coded_goal, verbose=True)

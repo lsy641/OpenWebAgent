@@ -45,6 +45,74 @@ pip install -e .
 pip install weboasis
 ```
 
+## Configuration
+
+WebOasis uses prompt-based configuration for its AI agents. You can customize these prompts by setting the `WEBOASIS_PROMPTS_PATH` environment variable to point to your own `prompts.yaml` file.
+
+### Customizing Prompts
+
+```bash
+# Set the path to your custom prompts file
+export WEBOASIS_PROMPTS_PATH="/path/to/your/custom/prompts.yaml"
+
+# Run your script
+python your_script.py
+```
+
+### Prompts File Format
+
+Your custom `prompts.yaml` should follow the same structure as the default:
+
+```yaml
+observe_prompt: |-
+  # Interactive Elements
+  ${interactive_elements_str}
+  
+  # Your custom instructions here
+  - Be more cautious when interacting with elements
+  - Focus on accessibility-first interactions
+  
+  # Response Format
+  [Action] (Your custom format)
+
+act_prompt: |-
+  # Interactive elements:
+  ${interactive_elements_str}
+  
+  # Action Space
+  ${action_space_desc}
+  
+  # Your custom instructions here
+  
+  # Goal:
+  ${goal}
+  
+  # Response Format
+
+intention_parse_prompt: |-
+  # Your custom intention parsing instructions
+  # Goal:
+  ${goal}
+
+example_profile: |-
+  # Your custom user profile
+  You are a [describe your persona]
+  
+  ## Task Description
+  [describe what you want to accomplish]
+  
+  ## Profile
+  [describe your characteristics and preferences]
+```
+
+### Available Variables
+
+The following variables can be used in your prompts:
+- `${interactive_elements_str}` - List of interactive elements on the page
+- `${action_space_desc}` - Available actions the agent can perform
+- `${accessibility_tree}` - Page accessibility information
+- `${goal}` - Current goal/task to accomplish
+
 ## Run a demo
 
 The demo simulates a prostate cancer patient using a newly developed visit‑prep web app to surface UI design and system usability issues. At each step, the DualAgent observes page dynamics, articulates the user experience, infers intent, and executes the next UI action.
