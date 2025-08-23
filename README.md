@@ -1,11 +1,15 @@
-# WebOasis
+<div align="center">
+<img src="docs/img/weboasis_logo.png" alt="WebOasis Logo" >
+
+Handling "Any site. Any page. Any UI. Any complexity" for your web tasks.
 
 [![GitHub](https://img.shields.io/badge/GitHub-WebOasis-181717?logo=github)](https://github.com/lsy641/WebOasis)
 [![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg)](https://arxiv.org/abs/0000.00000)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/lsy641/WebOasis/blob/main/LICENSE)
 [![GitHub stars](https://img.shields.io/badge/GitHub-stars%20WebOasis?style=social)](https://github.com/lsy641/WebOasis/stargazers)
+</div>
 
-WebOasis is a framework for building AI-driven web agents on real, complex websites. 
+
 
 
 
@@ -17,6 +21,7 @@ WebOasis is a framework for building AI-driven web agents on real, complex websi
 
 
 
+WebOasis is a framework for building AI-driven web agents on real, complex websites. 
 
 ## Features
 - **Any site. Any page. Any UI. Any complexity.** 
