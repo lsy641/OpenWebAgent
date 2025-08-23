@@ -94,10 +94,6 @@ act_prompt: |-
   
   # Response Format
 
-intention_parse_prompt: |-
-  # Your custom intention parsing instructions
-  # Goal:
-  ${goal}
 
 example_profile: |-
   # Your custom user profile
