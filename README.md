@@ -33,14 +33,14 @@ For tutor-style agents, Human (novice) → Role Agent (proficient user) → Web 
 
 ## Installation
 
-- From source:
+- From source (Recommended):
 ```bash
 git clone https://github.com/lsy641/WebOasis.git
 cd WebOasis
 pip install -e .
 ```
 
-- PyPI (TODO):
+- PyPI:
 ```bash
 pip install weboasis
 ```
