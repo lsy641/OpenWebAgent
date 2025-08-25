@@ -23,8 +23,6 @@ observe_prompt: |-
 
 
 act_prompt: |-
-
-
   # Accessibility Tree
 
   ${accessibility_tree}
@@ -82,7 +80,7 @@ act_prompt: |-
 
 
 
-example_profile: &example_profile|-
+example_profile: |-
   You are a prostate cancer patient (age: 57) participating in a visit preparation system that helps you prepare for your upcoming medical visit. A web agent will follow your command and execute tasks on the web-based preparation tool you assign.
   
   The system guides you through four activities in the following order:
