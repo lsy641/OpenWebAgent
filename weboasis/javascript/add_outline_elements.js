@@ -11,6 +11,7 @@
     ];
 
     let highlightedCount = 0;
+    const gap = 2; // distance between outline and label
     
     // ---------- helpers to compute live rects from DOM elements ----------
     function computeRectForElement(el) {
@@ -34,8 +35,15 @@
             outline.style.top = `${rect.top}px`;
             outline.style.width = `${rect.width}px`;
             outline.style.height = `${rect.height}px`;
-            label.style.left = `${rect.left + 4}px`;
-            label.style.top = `${rect.top - 4}px`;
+            // measure current label size to keep it outside the outline
+            const labelRect = label.getBoundingClientRect();
+            const top = Math.max(0, rect.top - labelRect.height - gap);
+            const left = Math.min(
+                Math.max(0, rect.left),
+                window.innerWidth - labelRect.width - 8
+            );
+            label.style.left = `${left}px`;
+            label.style.top = `${top}px`;
         });
     }
     function scheduleUpdate() {
@@ -71,8 +79,6 @@
         const testIdValue = el.getAttribute(testIdAttr) || '';
         label.innerText = testIdValue;
         label.style.position = 'fixed';
-        label.style.left = `${rect.left + 4}px`;
-        label.style.top = `${rect.top - 4}px`;
         label.style.padding = '1px 5px'; // Smaller padding
         label.style.background = color;
         label.style.color = '#fff';
@@ -85,7 +91,18 @@
         label.style.whiteSpace = 'nowrap';
 
         document.body.appendChild(outline);
+        // Append hidden first to measure its size, then position outside the outline
+        label.style.visibility = 'hidden';
         document.body.appendChild(label);
+        const labelRect = label.getBoundingClientRect();
+        const top = Math.max(0, rect.top - labelRect.height - gap);
+        const left = Math.min(
+            Math.max(0, rect.left),
+            window.innerWidth - labelRect.width - 8
+        );
+        label.style.top = `${top}px`;
+        label.style.left = `${left}px`;
+        label.style.visibility = 'visible';
         overlays.set(el, { outline, label, el });
 
         highlightedCount++;
