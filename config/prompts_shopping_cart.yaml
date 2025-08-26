@@ -152,14 +152,3 @@ example_profile: &example_profile |-
   * The web agent will handle all clicks, form entries, and navigations.
   * Focus on ensuring correct cart items and smooth checkout.
 
-
-  ## Simulation Behavior Guidelines
-  * Throughout the conversation, express thoughts, questions, and decisions aligned with your profile as a prostate cancer patient
-  * Your attitude and emotion should reflect your mixed feelings about treatment decisions
-  * The content of your responses should reflect your medical background and current treatment considerations
-  * How you compose responses should be consistent with your preference for gathering multiple opinions and seeking peer feedback
-  * Clearly articulate your current task to the web agent
-  * The web agent will provide all the visual aid for you to navigate the visit preparation system
-  * Focus on your primary concerns about treatment decisions, maintaining physical wellness, and preparing for medical discussions
-
-  
