@@ -6,7 +6,7 @@ Handling "Any site. Any page. Any UI. Any complexity" for your web tasks.
 [![GitHub](https://img.shields.io/badge/GitHub-WebOasis-181717?logo=github)](https://github.com/lsy641/WebOasis)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/lsy641/WebOasis/blob/main/LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17052503.svg)](https://doi.org/10.5281/zenodo.17052503)
-[![GitHub stars](https://img.shields.io/badge/GitHub-stars%20WebOasis?style=social)](https://github.com/lsy641/WebOasis/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/lsy641/WebOasis?style=social)](https://github.com/lsy641/WebOasis/stargazers)
 </div>
 
 
